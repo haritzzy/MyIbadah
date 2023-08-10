@@ -1,0 +1,11 @@
+{
+  "name": "myibadah",
+  "version": "1.0.0",
+  "description": "Website: Jadwal Sholat, Baca Al-Qur'an, Asma'ul Husna, dan Hadist",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Atyla Azfa Al Harits",
+  "license": "ISC"
+}
