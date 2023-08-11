@@ -37,48 +37,32 @@ if (segments.length > 1) {
       ].toUpperCase()} ${currentDate.getFullYear()}`;
 
       const tbody = document.querySelector("tbody");
+
       for (const value in parentData.jadwal) {
         const tr = document.createElement("tr");
-        const tdTanggal = document.createElement("td");
-        const tdImsak = document.createElement("td");
-        const tdSubuh = document.createElement("td");
-        const tdTerbit = document.createElement("td");
-        const tdDhuha = document.createElement("td");
-        const tdDzuhur = document.createElement("td");
-        const tdAshar = document.createElement("td");
-        const tdMaghrib = document.createElement("td");
-        const tdIsya = document.createElement("td");
 
-        tdTanggal.className = "tanggal";
-        tdTanggal.textContent = parentData.jadwal[value]["tanggal"];
-        tdImsak.className = "imsak";
-        tdImsak.textContent = parentData.jadwal[value]["imsak"];
-        tdSubuh.className = "subuh";
-        tdSubuh.textContent = parentData.jadwal[value]["subuh"];
-        tdTerbit.className = "terbit";
-        tdTerbit.textContent = parentData.jadwal[value]["terbit"];
-        tdDhuha.className = "dhuha";
-        tdDhuha.textContent = parentData.jadwal[value]["dhuha"];
-        tdDzuhur.className = "dzuhur";
-        tdDzuhur.textContent = parentData.jadwal[value]["dzuhur"];
-        tdAshar.className = "ashar";
-        tdAshar.textContent = parentData.jadwal[value]["ashar"];
-        tdMaghrib.className = "maghrib";
-        tdMaghrib.textContent = parentData.jadwal[value]["maghrib"];
-        tdIsya.className = "isya";
-        tdIsya.textContent = parentData.jadwal[value]["isya"];
+        const fields = [
+          "tanggal",
+          "imsak",
+          "subuh",
+          "terbit",
+          "dhuha",
+          "dzuhur",
+          "ashar",
+          "maghrib",
+          "isya",
+        ];
+
+        fields.forEach((field) => {
+          const td = document.createElement("td");
+          td.className = field;
+          td.textContent = parentData.jadwal[value][field];
+          tr.appendChild(td);
+        });
 
         tbody.appendChild(tr);
-        tr.appendChild(tdTanggal);
-        tr.appendChild(tdImsak);
-        tr.appendChild(tdSubuh);
-        tr.appendChild(tdTerbit);
-        tr.appendChild(tdDhuha);
-        tr.appendChild(tdDzuhur);
-        tr.appendChild(tdAshar);
-        tr.appendChild(tdMaghrib);
-        tr.appendChild(tdIsya);
       }
+      
     })
     .catch(function () {
       window.location.href = "error.html";
@@ -86,4 +70,3 @@ if (segments.length > 1) {
 } else {
   window.location.href = "error.html";
 }
-
