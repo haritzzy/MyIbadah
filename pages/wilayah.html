@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Jadwal Sholat | MyIbadah</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicons/favicon.png">
+    <link rel="manifest" href="../assets/img/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="../assets/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="../assets/css/theme.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <main class="main" id="top">
+        <nav class="navbar navbar-expand-lg navbar-light sticky-top" data-navbar-on-scroll="data-navbar-on-scroll"
+            style="background-image: none; background-color: rgba(249, 250, 253, 0);">
+            <div class="container"><a class="navbar-brand" href="index.html"><img src="../assets/img/logo.svg"
+                        height="31" alt="logo"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon">
+                    </span></button>
+                <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="home.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="wilayah.html">Jadwal
+                                Sholat</a></li>
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="quran.html">Baca
+                                Al-Qur'an</a></li>
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="asmaul-husna.html">Asma'ul
+                                Husna</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="hadist.html">Hadist</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section>
+            <div class="container">
+                <div class="d-flex justify-content-center">
+                    <div class="text-center">
+                        <h1 class="" style="font-family: sans-serif;"><b>Jadwal Sholat</b> <img
+                                src="https://cdn-icons-png.flaticon.com/128/3858/3858880.png" width="40" alt=""
+                                srcset="">
+                        </h1>
+                        <p>Cari daftar wilayah kabupaten/kota yang tersedia</p>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text border-dark" id="basic-addon1"><svg
+                                    class="svg-inline--fa fa-search fa-w-16" aria-hidden="true" focusable="false"
+                                    data-prefix="fas" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 512 512" data-fa-i2svg="">
+                                    <path fill="currentColor"
+                                        d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z">
+                                    </path>
+                                </svg></span>
+                            <input id="search" type="text" class="form-control border-dark"
+                                style="font-family: sans-serif;" placeholder="Search..." aria-label="Username"
+                                aria-describedby="basic-addon1" autocomplete="off">
+                        </div>
+                        <div class="flex gap-2">
+                            <div class="badge bg-warning font-monospace">Shift</div>
+                            <svg class="svg-inline--fa fa-plus fa-w-14" aria-hidden="true" focusable="false"
+                                data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 448 512" data-fa-i2svg="">
+                                <path fill="currentColor"
+                                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
+                                </path>
+                            </svg>
+                            <div class="badge bg-warning font-monospace">Enter</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="d-flex gap-4 flex-wrap mt-7 center" id="daftar-jadwal">
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+    <script src="../vendors/@popperjs/popper.min.js"></script>
+    <script src="../vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="../vendors/is/is.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="../vendors/fontawesome/all.min.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <script src="../assets/js/wilayah.js"></script>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Volkhov:wght@700&amp;display=swap"
+        rel="stylesheet">
+
+    
+</body>
+
+</html>
