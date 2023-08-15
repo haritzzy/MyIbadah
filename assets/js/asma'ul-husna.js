@@ -12,6 +12,7 @@ fetch(apiUrl)
       const div = document.createElement("div");
       div.className = "px-3 py-2 border border-2 rounded border-dark width-1";
       div.style.fontFamily = "sans-serif";
+      div.style.cursor = "pointer";
 
       const h3 = document.createElement("h3");
       h3.className = "number";

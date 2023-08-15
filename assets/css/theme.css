@@ -9169,6 +9169,10 @@ fieldset:disabled .btn {
   font-size: 2.88651rem !important;
 }
 
+.fs-9_5{
+  font-size: 2.88651rem !important;
+}
+
 .fs-10 {
   font-size: 3.24732rem !important;
 }
@@ -17437,6 +17441,17 @@ iframe {
 
 .br{
   display: none;
+}
+
+.fs-9_5{
+  font-size: 2.18651rem !important;
+}
+
+.flex-reverse{
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: reverse !important;
+  -ms-flex-direction: column-reverse !important;
+  flex-direction: column-reverse !important;
 }
 }
 
