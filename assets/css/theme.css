@@ -66,6 +66,7 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+
 hr {
   margin: 1rem 0;
   color: #EEEEEE;
@@ -17413,6 +17414,10 @@ iframe {
   width: 16rem;
 }
 
+.br{
+  display: block;
+}
+
 @media (max-width: 991.98px) {
   .carousel-indicators {
     -webkit-transform: translateY(6rem);
@@ -17429,6 +17434,10 @@ iframe {
 .width-1{
     width: 92vw;
   }
+
+.br{
+  display: none;
+}
 }
 
 .carousel-indicators [data-bs-target] {

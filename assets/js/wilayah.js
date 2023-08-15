@@ -5,6 +5,7 @@ fetch(apiUrl)
   .then((data) => {
     const lokasiArray = [];
     const idLokasiArray = [];
+
     for (let i = 0; i < data.length; i++) {
       const idLokasi = data[i]["id"];
       const lokasi = data[i]["lokasi"];
@@ -15,7 +16,7 @@ fetch(apiUrl)
     for (let i = 0; i < lokasiArray.length; i++) {
       const anchor = document.createElement("a");
       anchor.className = "lokasi";
-      anchor.href = `list-jadwal.html?${idLokasiArray[i]}`;
+      anchor.href = `list-jadwal.html?idkota=${idLokasiArray[i]}`;
       anchor.style.textDecoration = "none";
 
       const div = document.createElement("div");
@@ -27,7 +28,7 @@ fetch(apiUrl)
 
       anchor.appendChild(div);
 
-      const list = document.getElementById("daftar-jadwal");
+      const list = document.getElementById("daftar-wilayah");
       list.appendChild(anchor);
     }
   });
@@ -39,7 +40,7 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-const list = document.getElementById('daftar-jadwal');
+const list = document.getElementById('daftar-wilayah');
 const menuList = list.getElementsByTagName('a');
 
 inputElement.addEventListener('input', function (){

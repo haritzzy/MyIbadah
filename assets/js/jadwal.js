@@ -1,5 +1,5 @@
 const url = window.location.href;
-const segments = url.split("?");
+const segments = url.split("?idkota=");
 if (segments.length > 1) {
   const idKota = segments[1];
   const currentDate = new Date();
