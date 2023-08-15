@@ -72,24 +72,29 @@ inputElement.addEventListener("input", function () {
   }
 });
 
-const inputString = localStorage.getItem('mark');
-const cleanedString = inputString.replace(/-\d+$/, '');
+const inputString = localStorage.getItem("mark");
+const noSurah = localStorage.getItem("noSurah");
+
+const cleanedString = inputString.replace(/-\d+$/, "");
 const ayatNumber = inputString.match(/\d+/)[0];
 
 const formattedString = `${cleanedString
-  .split('-')
-  .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-  .join('-')} ayat ${ayatNumber}`;
+  .split("-")
+  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+  .join("-")} ayat ${ayatNumber}`;
 
-const mark = document.getElementById('mark')
-const noSurah = localStorage.getItem('noSurah');
-if(inputString && noSurah){
-  const anchorSurah = document.createElement('a');
-  anchorSurah.className = "text-primary";
-  anchorSurah.href = `baca.html?nosurah=${noSurah}`;
-  anchorSurah.textContent = formattedString;
-  mark.textContent = 'Terakhir dibaca: '
-  mark.appendChild(anchorSurah);
-}else{
-  mark.textContent = 'Terakhir dibaca: Tidak ada';
-}
+const mark = document.getElementById("mark");
+const anchorSurah = document.createElement("a");
+
+anchorSurah.className = "text-primary";
+anchorSurah.href = `baca.html?nosurah=${noSurah}`;
+anchorSurah.textContent = formattedString;
+mark.textContent = "Terakhir dibaca: ";
+mark.appendChild(anchorSurah);
+
+const deleteMark = document.getElementById("delete");
+deleteMark.addEventListener("click", function () {
+  localStorage.setItem("noSurah", null);
+  localStorage.setItem("mark", null);
+  window.location.reload();
+});
