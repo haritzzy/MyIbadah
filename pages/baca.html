@@ -39,7 +39,8 @@
                         <li class="nav-item"><a class="nav-link" aria-current="page" href="doa.html">Doa-doa</a>
                         </li>
                         <li class="nav-item"><a class="nav-link" aria-current="page" href="hadist.html">Hadist</a></li>
-                        <li class="nav-item"><a class="nav-link" aria-current="page" href="../index.html">Log Out</a></li>
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="../index.html">Log Out</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -56,7 +57,7 @@
                         <p id="info-surah"></p>
                     </div>
                 </div>
-                <div class="d-flex gap-6 flex-wrap justify-content-center">
+                <div class="d-flex gap-5 mb-0 flex-wrap justify-content-center">
                     <span class="fw-bold d-flex align-items-center" id="audio" style="cursor: pointer;"><img
                             src="https://cdn-icons-png.flaticon.com/128/59/59284.png" class="me-1" width="18" alt=""
                             srcset=""> Audio</span>
@@ -66,8 +67,24 @@
                     <span class="fw-bold d-flex align-items-center" id="tafsir" style="cursor: pointer;"><img
                             src="https://cdn-icons-png.flaticon.com/128/32/32354.png" class="me-1" width="18" alt=""
                             srcset=""> Tafsir</span>
+                    <span class="fw-bold d-flex align-items-center" id="qori" style="cursor: pointer;">
+                        <select name="" id="pilih-qori" class="fw-bold border-2 border-dark rounded">
+                            <option value="" selected id="select"></option>
+                            <option value="Abdullah-Al-Juhany">Abdullah Al Juhany</option>
+                            <option value="Abdul-Muhsin-Al-Qasim">Abdul Muhsin Al Qasim</option>
+                            <option value="Abdurrahman-as-Sudais">Abdurrahman as Sudais</option>
+                            <option value="Ibrahim-Al-Dossari">Ibrahim Al Dossari</option>
+                            <option value="Misyari-Rasyid-Al-Afasi">Misyari Rasyid Al Afasi</option>
+                        </select>
+                    </span>
                 </div>
-                <div class="mt-6">
+                <div class="d-flex justify-content-center mt-4" id="audio-utama">
+                    <audio controls id="audio-control">
+                        <source id="audio-qori"
+                            type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="mt-4">
                     <div class="float-start">
                         <a href="" id="sebelumnya" class="sebelumnya">
                             <button class="btn btn-outline-warning btn-sm"><i class="fas fa-chevron-left"></i>
@@ -83,11 +100,11 @@
                 </div>
             </div>
 
-            <br><br><br>
+            <br><br>
 
             <div class="container">
                 <div id="surah">
-
+                    
                 </div>
 
                 <div class="text-end">

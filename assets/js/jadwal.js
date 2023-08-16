@@ -62,7 +62,6 @@ if (segments.length > 1) {
 
         tbody.appendChild(tr);
       }
-      
     })
     .catch(function () {
       window.location.href = "error.html";

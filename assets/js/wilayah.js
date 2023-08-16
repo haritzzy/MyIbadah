@@ -40,19 +40,17 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-const list = document.getElementById('daftar-wilayah');
-const menuList = list.getElementsByTagName('a');
+const list = document.getElementById("daftar-wilayah");
+const menuList = list.getElementsByTagName("a");
 
-inputElement.addEventListener('input', function (){
+inputElement.addEventListener("input", function () {
   const searchText = inputElement.value.toLowerCase();
-  for(const menuItem of menuList){
+  for (const menuItem of menuList) {
     const menuItemText = menuItem.textContent.toLowerCase();
-    if(menuItemText.includes(searchText)){
+    if (menuItemText.includes(searchText)) {
       menuItem.style.display = "block";
-    }else{
+    } else {
       menuItem.style.display = "none";
     }
   }
 });
-
-

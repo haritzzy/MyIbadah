@@ -3,10 +3,8 @@ const apiUrl = "https://asmaul-husna-api.vercel.app/api/all";
 fetch(apiUrl)
   .then((response) => response.json())
   .then((data) => {
-
-    //   console.log(data);
-      const list = document.getElementById('daftar')
-      data.data.forEach((item) => {
+    const list = document.getElementById("daftar");
+    data.data.forEach((item) => {
       const { urutan, latin, arab, arti } = item;
 
       const div = document.createElement("div");

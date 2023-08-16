@@ -31,7 +31,7 @@ fetch(apiUrl)
         "accordion-button",
         "collapsed",
         "fw-bold",
-        "title",
+        "title"
       );
       accordionButton.type = "button";
       accordionButton.setAttribute("data-bs-toggle", "collapse");

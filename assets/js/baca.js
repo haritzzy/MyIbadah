@@ -38,6 +38,30 @@ if (segments.length > 1) {
         }
       });
 
+      const getQori = document.getElementById("pilih-qori");
+      let getValue = ``;
+      getQori.addEventListener("input", function () {
+        getValue = getQori.value;
+        updateAudioUrl(getValue);
+        localStorage.setItem("qori", getValue);
+        window.location.reload();
+      });
+
+      function updateAudioUrl(getValue) {
+        const formattedNoSurah =
+          noSurah < 10 ? "0" + noSurah : noSurah.toString();
+
+        const audioUrl = `https://equran.nos.wjv-1.neo.id/audio-full/${getValue}/0${formattedNoSurah}.mp3`;
+        const audioUrlPerAyat = `https://equran.nos.wjv-1.neo.id/audio-partial/${getValue}/0${formattedNoSurah}0`;
+
+        const audioControl = document.getElementById("audio-control");
+        const audioUtamaQori = document.getElementById("audio-qori");
+        audioUtamaQori.setAttribute("src", audioUrl);
+        audioControl.load();
+
+        return `${audioUrlPerAyat}`;
+      }
+
       const surah = document.getElementById("surah");
       for (let i = 0; i < parentData.ayat.length; i++) {
         const div1 = document.createElement("div");
@@ -72,6 +96,19 @@ if (segments.length > 1) {
         div6.className = "mt-4 mb-1 terjemahan";
         div6.textContent = parentData.ayat[i]["teksIndonesia"];
 
+        const divAudio = document.createElement("div");
+        divAudio.className = "mt-2 mb-4 d-flex justify-content-start audio";
+
+        const audioAyat = document.createElement("audio");
+        audioAyat.className = "audioAyat";
+        audioAyat.setAttribute("controls", "");
+        audioAyat.load();
+
+        const audioSource = document.createElement("source");
+        audioSource.src = `${updateAudioUrl(localStorage.getItem("qori"))}0${
+          parentData.ayat[i]["nomorAyat"]
+        }.mp3`;
+
         const div7 = document.createElement("div");
         div7.className = "d-flex justify-content-end";
 
@@ -99,6 +136,9 @@ if (segments.length > 1) {
         div1.appendChild(br2);
         div1.appendChild(div5);
         div1.appendChild(div6);
+        audioAyat.appendChild(audioSource);
+        divAudio.appendChild(audioAyat);
+        div1.appendChild(divAudio);
         div7.appendChild(button);
         div1.appendChild(div7);
         div1.appendChild(hr);
@@ -132,7 +172,11 @@ if (segments.length > 1) {
 
             Swal.fire({
               title: "Sukses tersimpan",
-              html: `Data surah <b>${parentData.namaLatin}</b> ayat <b>${mButton.getAttribute('id')}</b> berhasil ditandai`,
+              html: `Data surah <b>${
+                parentData.namaLatin
+              }</b> ayat <b>${mButton.getAttribute(
+                "id"
+              )}</b> berhasil ditandai`,
               icon: "success",
               confirmButtonText: "Oke",
             });
@@ -140,6 +184,33 @@ if (segments.length > 1) {
             window.location.href = "error.html";
           }
         });
+      });
+
+      const selectQori = document.getElementById("select");
+      selectQori.textContent = localStorage.getItem("qori")
+        ? localStorage.getItem("qori")
+        : "Pilih Qori'";
+
+      const audioUtama = document.getElementById("audio-utama");
+      const audio = document.getElementById("audio");
+      const audioClass = document.querySelectorAll(".audio");
+
+      const isAudioHidden = localStorage.getItem("audioHidden");
+      if (isAudioHidden === "true") {
+        audioClass.forEach(function (element) {
+          audioUtama.classList.add("d-none");
+          element.classList.add("d-none");
+        });
+      }
+
+      audio.addEventListener("click", function () {
+        audioClass.forEach(function (element) {
+          audioUtama.classList.toggle("d-none");
+          element.classList.toggle("d-none");
+        });
+
+        const shouldHide = audioClass[0].classList.contains("d-none");
+        localStorage.setItem("audioHidden", shouldHide.toString());
       });
 
       const latin = document.getElementById("latin");
@@ -161,18 +232,17 @@ if (segments.length > 1) {
         localStorage.setItem("latinHidden", shouldHide.toString());
       });
 
-      const tafsir = document.getElementById('tafsir');
-      tafsir.addEventListener('click', function (){
+      const tafsir = document.getElementById("tafsir");
+      tafsir.addEventListener("click", function () {
         Swal.fire({
           title: `Tafsir surah ${parentData.namaLatin}`,
           html: `<div class="text-justify">${parentData.deskripsi}</div>`,
           confirmButtonText: "Oke",
           customClass: {
-            content: "scrollable-swal-content"
-          }
-        });        
+            content: "scrollable-swal-content",
+          },
+        });
       });
-        
 
       if (url.includes(`#${localStorage.getItem("mark")}`)) {
         window.location.href;
