@@ -9,7 +9,7 @@
 MyIbadah adalah aplikasi website yang menyediakan jadwal sholat, baca Al-Qur'an, dan lain-lain.
 </p>
 
-## 📃 Fitur
+## 📃 Feature
 
 - Jadwal Sholat
 - Baca Al-Qur'an
@@ -22,7 +22,7 @@ MyIbadah adalah aplikasi website yang menyediakan jadwal sholat, baca Al-Qur'an,
 - JavaScript (Client Side)
 - Bootstrap (5.0)
 
-## 🏷️ Kredit
+## 🏷️ Credit
 
 Terinspirasi dari: [https://info-jadwal-sholat.vercel.app/](https://info-jadwal-sholat.vercel.app/)
 
