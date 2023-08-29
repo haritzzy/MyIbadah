@@ -1,11 +1,28 @@
-const apiUrl = "https://equran.id/api/v2/surat";
+class Quran {
+  constructor() {
+    this.apiUrl = "https://equran.id/api/v2/surat";
+    this.fetchData();
+  }
 
-fetch(apiUrl)
-  .then((response) => response.json())
-  .then((data) => {
+  async fetchData() {
+    try {
+      const response = await fetch(this.apiUrl);
+      const data = await response.json();
+      this.dataApi = data.data;
+      this.renderListSurah();
+      this.setupSearch();
+      this.setKeyboardAction();
+      this.deleteMark();
+    } catch (error) {
+      window.location.href = "error.html";
+      console.error(error);
+    }
+  }
+
+  renderListSurah() {
     const list = document.getElementById("daftar-surah");
 
-    data.data.forEach((item) => {
+    this.dataApi.forEach((item) => {
       const { nomor, nama, namaLatin, jumlahAyat, tempatTurun, arti } = item;
 
       const anchor = document.createElement("a");
@@ -48,62 +65,77 @@ fetch(apiUrl)
 
       list.appendChild(anchor);
     });
-  });
-
-const inputElement = document.getElementById("search");
-document.addEventListener("keydown", (event) => {
-  if (event.shiftKey && event.key === "Enter") {
-    inputElement.focus();
   }
-});
 
-const list = document.getElementById("daftar-surah");
-const menuList = list.getElementsByTagName("a");
+  setupSearch() {
+    const inputElement = document.getElementById("search");
+    const list = document.getElementById("daftar-surah");
+    const menuList = list.getElementsByTagName("a");
 
-inputElement.addEventListener("input", function () {
-  const searchText = inputElement.value.toLowerCase();
-  for (const menuItem of menuList) {
-    const menuItemText = menuItem.textContent.toLowerCase();
-    if (menuItemText.includes(searchText)) {
-      menuItem.style.display = "block";
+    inputElement.addEventListener("input", function () {
+      const searchText = inputElement.value.toLowerCase();
+      for (const menuItem of menuList) {
+        const menuItemText = menuItem.textContent.toLowerCase();
+        if (menuItemText.includes(searchText)) {
+          menuItem.style.display = "block";
+        } else {
+          menuItem.style.display = "none";
+        }
+      }
+    });
+
+    return inputElement;
+  }
+
+  setKeyboardAction() {
+    document.addEventListener("keydown", (event) => {
+      if (event.shiftKey && event.key === "Enter") {
+        this.setupSearch().focus();
+      }
+    });
+  }
+
+  deleteMark() {
+    const inputString = localStorage.getItem("mark");
+    const noSurah = localStorage.getItem("noSurah");
+
+    const deleteMark = document.getElementById("delete");
+    if (
+      inputString == "null" ||
+      (inputString == undefined && noSurah == "null") ||
+      noSurah == undefined
+    ) {
+      deleteMark.style.display = "none";
     } else {
-      menuItem.style.display = "none";
+      deleteMark.style.display = "inline";
+      const cleanedString = inputString.replace(/-\d+$/, "");
+      const ayatNumber = inputString.match(/\d+/)[0];
+
+      const formattedString = `${cleanedString
+        .split("-")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join("-")} ayat ${ayatNumber}`;
+
+      const mark = document.getElementById("mark");
+      const anchorSurah = document.createElement("a");
+
+      anchorSurah.className = "text-primary";
+      anchorSurah.href = `baca.html?nosurah=${noSurah}`;
+      anchorSurah.textContent = formattedString;
+      mark.textContent = "Terakhir dibaca: ";
+      mark.appendChild(anchorSurah);
     }
+
+    deleteMark.addEventListener("click", function () {
+      localStorage.setItem("noSurah", null);
+      localStorage.setItem("mark", null);
+      window.location.reload();
+    });
   }
-});
-
-const inputString = localStorage.getItem("mark");
-const noSurah = localStorage.getItem("noSurah");
-
-const deleteMark = document.getElementById("delete");
-if (
-  inputString == "null" ||
-  (inputString == undefined && noSurah == "null") ||
-  noSurah == undefined
-) {
-  deleteMark.style.display = "none";
-} else {
-  deleteMark.style.display = "inline";
-  const cleanedString = inputString.replace(/-\d+$/, "");
-  const ayatNumber = inputString.match(/\d+/)[0];
-
-  const formattedString = `${cleanedString
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join("-")} ayat ${ayatNumber}`;
-
-  const mark = document.getElementById("mark");
-  const anchorSurah = document.createElement("a");
-
-  anchorSurah.className = "text-primary";
-  anchorSurah.href = `baca.html?nosurah=${noSurah}`;
-  anchorSurah.textContent = formattedString;
-  mark.textContent = "Terakhir dibaca: ";
-  mark.appendChild(anchorSurah);
 }
 
-deleteMark.addEventListener("click", function () {
-  localStorage.setItem("noSurah", null);
-  localStorage.setItem("mark", null);
-  window.location.reload();
-});
+const QuranObject = new Quran();
+QuranObject.renderListSurah();
+QuranObject.setupSearch();
+QuranObject.setKeyboardAction();
+QuranObject.deleteMark();

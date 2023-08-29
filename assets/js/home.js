@@ -1,35 +1,50 @@
-const greetings = document.getElementById("greetings");
-const currentHour = new Date().getHours();
+class Greetings {
+  constructor() {
+    this.element = document.getElementById("greetings");
+    this.currentHour = new Date().getHours();
+  }
 
-if (currentHour >= 5 && currentHour < 11) {
-  greetings.textContent = "Selamat Pagi";
-} else if (currentHour >= 11 && currentHour < 15) {
-  greetings.textContent = "Selamat Siang";
-} else if (currentHour >= 15 && currentHour < 18) {
-  greetings.textContent = "Selamat Sore";
-} else {
-  greetings.textContent = "Selamat Malam";
+  setGreetings() {
+    if (this.currentHour >= 5 && this.currentHour < 11)
+      return (this.element.textContent = "Selamat Pagi");
+    if (this.currentHour >= 11 && this.currentHour < 15)
+      return (this.element.textContent = "Selamat Siang");
+    if (this.currentHour >= 15 && this.currentHour < 18)
+      return (this.element.textContent = "Selamat Sore");
+    return (this.element.textContent = "Selamat Malam");
+  }
 }
 
-const displayDate = document.getElementById("waktu");
-const monthsInIndonesian = [
-  "Januari",
-  "Februari",
-  "Maret",
-  "April",
-  "Mei",
-  "Juni",
-  "Juli",
-  "Agustus",
-  "September",
-  "Oktober",
-  "November",
-  "Desember",
-];
+class Calendar {
+  constructor() {
+    this.months = [
+      "Januari",
+      "Februari",
+      "Maret",
+      "April",
+      "Mei",
+      "Juni",
+      "Juli",
+      "Agustus",
+      "September",
+      "Oktober",
+      "November",
+      "Desember",
+    ];
+    this.elementDate = document.getElementById("waktu");
+  }
 
-setInterval(function () {
-  const currentTime = new Date();
-  displayDate.innerHTML = `${currentTime.getDate()} ${
-    monthsInIndonesian[currentTime.getMonth()]
-  } ${currentTime.getFullYear()}, ${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}`;
-}, 1000);
+  setCalendar() {
+    setInterval(() => {
+      const currentTime = new Date();
+      this.elementDate.innerHTML = `${currentTime.getDate()} ${
+        this.months[currentTime.getMonth()]
+      } ${currentTime.getFullYear()}, ${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}`;
+    });
+  }
+}
+
+
+
+new Greetings().setGreetings();
+new Calendar().setCalendar();

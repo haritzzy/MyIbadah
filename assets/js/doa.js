@@ -1,10 +1,26 @@
-const apiUrl = "https://islamic-api-zhirrr.vercel.app/api/doaharian";
+class DoaHarian {
+  constructor() {
+    this.apiUrl = `https://islamic-api-zhirrr.vercel.app/api/doaharian`;
+    this.fetchData();
+  }
 
-fetch(apiUrl)
-  .then((response) => response.json())
-  .then((data) => {
+  async fetchData() {
+    try {
+      const response = await fetch(this.apiUrl);
+      const data = await response.json();
+      this.dataApi = data.data;
+      this.renderView();
+      this.setupSearch();
+      this.setKeyboardAction();
+    } catch (error) {
+      window.location.href = "error.html";
+      console.error(error);
+    }
+  }
+
+  renderView() {
     let counter = 1;
-    data.data.forEach((item) => {
+    this.dataApi.forEach((item) => {
       const { title, arabic, latin, translation } = item;
 
       const daftarDoaContainer = document.getElementById("daftar-doa");
@@ -72,32 +88,44 @@ fetch(apiUrl)
 
       counter++;
     });
-  });
-
-const inputElement = document.getElementById("search");
-document.addEventListener("keydown", (event) => {
-  if (event.shiftKey && event.key === "Enter") {
-    inputElement.focus();
   }
-});
 
-const list = document.getElementById("daftar-doa");
-const menuList = list.getElementsByTagName("article");
-const items = list.getElementsByClassName("item");
+  setupSearch() {
+    const inputElement = document.getElementById("search");
+    const list = document.getElementById("daftar-doa");
+    const menuList = list.getElementsByTagName("article");
+    const items = list.getElementsByClassName("item");
 
-inputElement.addEventListener("input", function () {
-  const searchText = inputElement.value.toLowerCase();
-  let i = 0;
-  for (const menuItem of menuList) {
-    const menuItemText = menuItem.textContent.toLowerCase();
-    if (menuItemText.includes(searchText)) {
-      menuItem.style.display = "block";
-      items[i].style.display = "block";
-      i++;
-    } else {
-      menuItem.style.display = "none";
-      items[i].style.display = "none";
-      i++;
-    }
+    inputElement.addEventListener("input", function () {
+      const searchText = inputElement.value.toLowerCase();
+      let i = 0;
+      for (const menuItem of menuList) {
+        const menuItemText = menuItem.textContent.toLowerCase();
+        if (menuItemText.includes(searchText)) {
+          menuItem.style.display = "block";
+          items[i].style.display = "block";
+          i++;
+        } else {
+          menuItem.style.display = "none";
+          items[i].style.display = "none";
+          i++;
+        }
+      }
+    });
+
+    return inputElement;
   }
-});
+
+  setKeyboardAction() {
+    document.addEventListener("keydown", (event) => {
+      if (event.shiftKey && event.key === "Enter") {
+        this.setupSearch().focus();
+      }
+    });
+  }
+}
+
+const DoaHarianObject = new DoaHarian();
+DoaHarianObject.renderView();
+DoaHarianObject.setupSearch();
+DoaHarianObject.setKeyboardAction();
