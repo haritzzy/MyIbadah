@@ -48,11 +48,18 @@ if (segments.length > 1) {
       });
 
       function updateAudioUrl(getValue) {
-        const formattedNoSurah =
-          noSurah < 10 ? "0" + noSurah : noSurah.toString();
+        let formattedNoSurah = "";
 
-        const audioUrl = `https://equran.nos.wjv-1.neo.id/audio-full/${getValue}/0${formattedNoSurah}.mp3`;
-        const audioUrlPerAyat = `https://equran.nos.wjv-1.neo.id/audio-partial/${getValue}/0${formattedNoSurah}0`;
+        if (noSurah < 10) {
+          formattedNoSurah = "00" + noSurah;
+        } else if (noSurah >= 10 && noSurah < 100) {
+          formattedNoSurah = "0" + noSurah;
+        } else if (noSurah >= 100) {
+          formattedNoSurah = noSurah;
+        }
+
+        const audioUrl = `https://equran.nos.wjv-1.neo.id/audio-full/${getValue}/${formattedNoSurah}.mp3`;
+        const audioUrlPerAyat = `https://equran.nos.wjv-1.neo.id/audio-partial/${getValue}/${formattedNoSurah}`;
 
         const audioControl = document.getElementById("audio-control");
         const audioUtamaQori = document.getElementById("audio-qori");
@@ -103,10 +110,19 @@ if (segments.length > 1) {
         audioAyat.setAttribute("controls", "");
         audioAyat.load();
 
+        let formattedNoAyat = "";
+        if (ayatData.nomorAyat < 10) {
+          formattedNoAyat = "00" + ayatData.nomorAyat;
+        } else if (ayatData.nomorAyat >= 10 && ayatData.nomorAyat < 100) {
+          formattedNoAyat = "0" + ayatData.nomorAyat;
+        } else if (ayatData.nomorAyat >= 100) {
+          formattedNoAyat = ayatData.nomorAyat;
+        }
+
         const audioSource = document.createElement("source");
-        audioSource.src = `${updateAudioUrl(localStorage.getItem("qori"))}0${
-          ayatData.nomorAyat
-        }.mp3`;
+        audioSource.src = `${updateAudioUrl(
+          localStorage.getItem("qori")
+        )}${formattedNoAyat}.mp3`;
 
         const div7 = document.createElement("div");
         div7.className = "d-flex justify-content-end";
