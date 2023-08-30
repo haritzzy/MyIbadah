@@ -31,4 +31,4 @@ Image source: <a href="https://freepik.com">Freepik</a> & <a href="https://flati
 ---
 
 **Jangan lupa kasih 🌟 biar gk error :)**  
-**Terimakasih**
+**Maap klo kode JavaScript nya berantakan, masih pemula puh🙏🙇**
