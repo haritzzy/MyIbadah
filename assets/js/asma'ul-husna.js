@@ -85,5 +85,4 @@ class AsmaulHusna {
 
 const AsmaulHusnaObject = new AsmaulHusna();
 AsmaulHusnaObject.renderView();
-AsmaulHusnaObject.setupSearch();
-AsmaulHusnaObject.setKeyboardAction();
+

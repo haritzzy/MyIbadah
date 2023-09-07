@@ -79,5 +79,4 @@ class RegionIndonesia {
 
 const RegionObject = new RegionIndonesia();
 RegionObject.renderRegionList();
-RegionObject.setupSearch();
-RegionObject.setKeyboardAction();
+

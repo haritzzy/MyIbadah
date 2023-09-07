@@ -136,6 +136,4 @@ class Quran {
 
 const QuranObject = new Quran();
 QuranObject.renderListSurah();
-QuranObject.setupSearch();
-QuranObject.setKeyboardAction();
-QuranObject.deleteMark();
+

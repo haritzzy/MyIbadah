@@ -3,6 +3,7 @@ class Schedule {
     this.url = window.location.href;
     this.segments = this.url.split("?idkota=");
     this.currentDate = new Date();
+    this.checkUrl(),
     this.months = [
       "Januari",
       "Februari",
@@ -84,5 +85,4 @@ class Schedule {
 }
 
 const ScheduleObject = new Schedule();
-ScheduleObject.checkUrl();
 ScheduleObject.renderSchedule();

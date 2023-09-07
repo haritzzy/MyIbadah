@@ -127,5 +127,3 @@ class DoaHarian {
 
 const DoaHarianObject = new DoaHarian();
 DoaHarianObject.renderView();
-DoaHarianObject.setupSearch();
-DoaHarianObject.setKeyboardAction();

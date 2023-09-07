@@ -15,7 +15,7 @@ MyIbadah adalah aplikasi website yang menyediakan jadwal sholat, baca Al-Qur'an,
 - Baca Al-Qur'an
 - Asma'ul Husna
 - Doa-doa Harian
-- Hadist (Masih nyari API nya)
+- Puasa Sunnah
 
 ## 🛠️ Tech Stack
 
