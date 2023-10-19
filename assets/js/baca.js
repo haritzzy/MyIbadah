@@ -72,44 +72,6 @@ if (segments.length > 1) {
       const surah = document.getElementById("surah");
 
       parentData.ayat.forEach((ayatData) => {
-        const div1 = document.createElement("div");
-        div1.className = "mt-5";
-
-        const div2 = document.createElement("div");
-        div2.className = "float-start text-start";
-
-        const div3 = document.createElement("div");
-        div3.className =
-          "bg-warning fs-1 fw-bold text-white d-flex justify-content-center align-items-center nomor rounded-circle mb-3";
-        div3.id = `${parentData.namaLatin.toLowerCase()}-${ayatData.nomorAyat}`;
-        div3.style.width = "45px";
-        div3.style.height = "45px";
-        div3.textContent = ayatData.nomorAyat;
-
-        const div4 = document.createElement("div");
-        div4.className = "float-end fw-bold fs-5 arab text-end";
-        div4.style.fontFamily = "'Amiri', serif";
-        div4.style.lineHeight = "4.5rem";
-        div4.style.letterSpacing = "1px";
-        div4.textContent = ayatData.teksArab;
-
-        const div5 = document.createElement("div");
-        div5.className = "mt-4 mb-4 latin text-warning text-end fw-bold";
-        div5.style.fontStyle = "italic";
-        div5.textContent = ayatData.teksLatin;
-
-        const div6 = document.createElement("div");
-        div6.className = "mt-4 mb-1 terjemahan";
-        div6.textContent = ayatData.teksIndonesia;
-
-        const divAudio = document.createElement("div");
-        divAudio.className = "mt-2 mb-4 d-flex justify-content-start audio";
-
-        const audioAyat = document.createElement("audio");
-        audioAyat.className = "audioAyat";
-        audioAyat.setAttribute("controls", "");
-        audioAyat.load();
-
         let formattedNoAyat = "";
         if (ayatData.nomorAyat < 10) {
           formattedNoAyat = "00" + ayatData.nomorAyat;
@@ -119,43 +81,35 @@ if (segments.length > 1) {
           formattedNoAyat = ayatData.nomorAyat;
         }
 
-        const audioSource = document.createElement("source");
-        audioSource.src = `${updateAudioUrl(
-          localStorage.getItem("qori")
-        )}${formattedNoAyat}.mp3`;
-
-        const div7 = document.createElement("div");
-        div7.className = "d-flex justify-content-end";
-
-        const button = document.createElement("button");
-        button.className = "btn btn-sm btn-outline-warning buttonMark";
-        button.id = ayatData.nomorAyat;
-        button.textContent = "Tandai ayat";
-        button.setAttribute(
-          "data-surah",
-          `${parentData.namaLatin.toLowerCase()}-${ayatData.nomorAyat}`
-        );
-
-        const br1 = document.createElement("br");
-        const br2 = document.createElement("br");
-
-        const hr = document.createElement("hr");
-        hr.className = "border-warning border border-top-2";
-
-        div2.appendChild(div3);
-        div1.appendChild(div2);
-        div1.appendChild(div4);
-        div1.appendChild(br1);
-        div1.appendChild(br2);
-        div1.appendChild(div5);
-        div1.appendChild(div6);
-        audioAyat.appendChild(audioSource);
-        divAudio.appendChild(audioAyat);
-        div1.appendChild(divAudio);
-        div7.appendChild(button);
-        div1.appendChild(div7);
-        div1.appendChild(hr);
-        surah.appendChild(div1);
+        surah.innerHTML += `<div class="mt-5">
+        <div class="float-start text-start">
+            <div class="bg-warning fs-1 fw-bold text-white d-flex justify-content-center align-items-center nomor rounded-circle mb-3"
+                id="${parentData.namaLatin.toLowerCase()}-${
+          ayatData.nomorAyat
+        }" style="width: 45px; height: 45px;">
+                ${ayatData.nomorAyat}
+            </div>
+        </div>
+        <div class="float-end fw-bold fs-5 arab text-end"
+            style="font-family: 'Amiri', serif; line-height: 4.5rem; letter-spacing: 1px;">
+            ${ayatData.teksArab}
+        </div>
+        <br><br>
+        <div class="mt-4 mb-4 latin text-warning text-end fw-bold" style="font-style: italic;">${
+          ayatData.teksLatin
+        }</div>
+        <div class="mt-4 mb-1 terjemahan">${ayatData.teksIndonesia}</div>
+        <div class="mt-2 mb-4 d-flex justify-content-start audio"><audio class="audioAyat" controls="">
+                <source src="${updateAudioUrl(
+                  localStorage.getItem("qori")
+                )}${formattedNoAyat}.mp3">
+            </audio></div>
+        <div class="d-flex justify-content-end"><button class="btn btn-sm btn-outline-warning buttonMark" id="${ayatData.nomorAyat}"
+                data-surah="${parentData.namaLatin.toLowerCase()}-${
+          ayatData.nomorAyat
+        }">Tandai ayat</button></div>
+        <hr class="border-warning border border-top-2">
+    </div>`;
       });
 
       const markButtons = document.querySelectorAll(".buttonMark");

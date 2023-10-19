@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="mt-5">
+        <div class="float-start text-start">
+            <div class="bg-warning fs-1 fw-bold text-white d-flex justify-content-center align-items-center nomor rounded-circle mb-3"
+                id="${parentData.namaLatin.toLowerCase()}-${ayatData.nomorAyat}" style="width: 45px; height: 45px;">
+                ayatData.nomorAyat
+            </div>
+        </div>
+        <div class="float-end fw-bold fs-5 arab text-end"
+            style="font-family: 'Amiri', serif; line-height: 4.5rem; letter-spacing: 1px;">
+            ayatData.teksArab
+        </div>
+        <br><br>
+        <div class="mt-4 mb-4 latin text-warning text-end fw-bold" style="font-style: italic;">ayatData.teksLatin</div>
+        <div class="mt-4 mb-1 terjemahan">ayatData.teksIndonesia</div>
+        <div class="mt-2 mb-4 d-flex justify-content-start audio"><audio class="audioAyat" controls="">
+                <source src="${updateAudioUrl(
+            localStorage.getItem("qori") )}${formattedNoAyat}.mp3">
+            </audio></div>
+        <div class="d-flex justify-content-end"><button class="btn btn-sm btn-outline-warning buttonMark" id="ayatData.nomorAyat"
+                data-surah="${parentData.namaLatin.toLowerCase()}-${ayatData.nomorAyat}">Tandai ayat</button></div>
+        <hr class="border-warning border border-top-2">
+    </div>
+</body>
+
+</html>
