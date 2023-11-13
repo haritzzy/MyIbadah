@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#ffffff">
 
-    <title>Jadwal Sholat | MyIbadah</title>
+    <title>Niat Sholat | MyIbadah</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/128/4358/4358837.png">
     <link href="../assets/css/theme.css" rel="stylesheet" />
@@ -28,11 +28,10 @@
                 <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" aria-current="page" href="home.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link text-warning" aria-current="page"
-                                href="wilayah.html">Jadwal
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="wilayah.html">Jadwal
                                 Sholat</a></li>
-                        <li class="nav-item"><a class="nav-link" aria-current="page" href="niat-sholat.html">Niat
-                                Sholat</a>
+                        <li class="nav-item"><a class="nav-link text-warning" aria-current="page"
+                                href="niat-sholat.html">Niat Sholat</a>
                         </li>
                         <li class="nav-item"><a class="nav-link" aria-current="page" href="quran.html">Baca
                                 Al-Qur'an</a></li>
@@ -52,34 +51,23 @@
             <div class="container">
                 <div class="d-flex justify-content-center">
                     <div class="text-center">
-                        <h1 class="" style="font-family: sans-serif;"><b>Jadwal Sholat</b> <img
-                                src="https://cdn-icons-png.flaticon.com/128/3858/3858880.png" width="40" alt=""
+                        <h1 class="" style="font-family: sans-serif;"><b>Niat Sholat</b> <img
+                                src="https://cdn-icons-png.flaticon.com/128/10398/10398830.png" width="40" alt=""
                                 srcset="">
                         </h1>
-                        <p>"dan mohon lah pertolongan (kepada Allah) dengan sabar dan sholat. <br class="br"> Dan
-                            (sholat) itu sungguh berat, kecuali bagi orang-orang yang khusyuk."</p>
+                        <p>“Sesungguhnya orang yang paling mulia di antara kamu di sisi Allah <br class="br"> adalah
+                            orang yang paling
+                            bertakwa diantara kamu“</p>
                         <div class="input-group mb-3">
-                            <span class="input-group-text border-dark" id="basic-addon1"><svg
-                                    class="svg-inline--fa fa-search fa-w-16" aria-hidden="true" focusable="false"
-                                    data-prefix="fas" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 512 512" data-fa-i2svg="">
-                                    <path fill="currentColor"
-                                        d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z">
-                                    </path>
-                                </svg></span>
-                            <input id="search" type="text" class="form-control border-dark"
-                                style="font-family: sans-serif;" placeholder="Search..." aria-label="Username"
-                                aria-describedby="basic-addon1" autocomplete="off">
+                            <span class="input-group-text border-dark" id="basic-addon1"><i
+                                    class="fas fa-search"></i></span>
+                            <input id="search" type="text" class="form-control border-dark" placeholder="Search..."
+                                aria-label="Username" aria-describedby="basic-addon1" style="font-family: sans-serif;"
+                                autocomplete="off">
                         </div>
                         <div class="flex gap-2">
                             <div class="badge bg-warning font-monospace">Shift</div>
-                            <svg class="svg-inline--fa fa-plus fa-w-14" aria-hidden="true" focusable="false"
-                                data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 448 512" data-fa-i2svg="">
-                                <path fill="currentColor"
-                                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
-                                </path>
-                            </svg>
+                            <span class="fas fa-plus"></span>
                             <div class="badge bg-warning font-monospace">Enter</div>
                         </div>
                     </div>
@@ -87,7 +75,8 @@
             </div>
 
             <div class="container">
-                <div class="d-flex gap-4 flex-wrap mt-7 center" id="daftar-wilayah">
+                <div class="mt-7" id="daftar-niat-sholat">
+
                 </div>
             </div>
         </section>
@@ -101,13 +90,11 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
     <script src="../vendors/fontawesome/all.min.js"></script>
     <script src="../assets/js/theme.js"></script>
-    <script src="../assets/js/wilayah.js"></script>
+    <script src="../assets/js/niat-sholat.js"></script>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Volkhov:wght@700&amp;display=swap&family=Pacifico&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Volkhov:wght@700&amp;display=swap&family=Pacifico&display=swap&family=Amiri&family=Pacifico&display=swap&"
         rel="stylesheet">
-
-
 </body>
 
 </html>
